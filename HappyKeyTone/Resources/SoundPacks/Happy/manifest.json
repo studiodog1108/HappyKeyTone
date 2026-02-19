@@ -1,0 +1,207 @@
+{
+    "id": "Happy",
+    "name": "Happy",
+    "author": "HappyKeyTone User Import",
+    "version": "1.0.0",
+    "description": "Auto-sliced from Happy.wav using transient detection.",
+    "keyDown": {
+        "letter": [
+            "keydown/letter_01.wav",
+            "keydown/letter_02.wav",
+            "keydown/letter_03.wav",
+            "keydown/letter_04.wav",
+            "keydown/letter_05.wav",
+            "keydown/letter_06.wav",
+            "keydown/letter_07.wav",
+            "keydown/letter_08.wav",
+            "keydown/letter_09.wav",
+            "keydown/letter_10.wav",
+            "keydown/letter_11.wav",
+            "keydown/letter_12.wav",
+            "keydown/letter_13.wav",
+            "keydown/letter_14.wav",
+            "keydown/letter_15.wav",
+            "keydown/letter_16.wav",
+            "keydown/letter_17.wav",
+            "keydown/letter_18.wav",
+            "keydown/letter_19.wav",
+            "keydown/letter_20.wav",
+            "keydown/letter_21.wav",
+            "keydown/letter_22.wav",
+            "keydown/letter_23.wav",
+            "keydown/letter_24.wav",
+            "keydown/letter_25.wav",
+            "keydown/letter_26.wav",
+            "keydown/letter_27.wav",
+            "keydown/letter_28.wav",
+            "keydown/letter_29.wav",
+            "keydown/letter_30.wav",
+            "keydown/letter_31.wav",
+            "keydown/letter_32.wav",
+            "keydown/letter_33.wav",
+            "keydown/letter_34.wav",
+            "keydown/letter_35.wav",
+            "keydown/letter_36.wav",
+            "keydown/letter_37.wav",
+            "keydown/letter_38.wav",
+            "keydown/letter_39.wav",
+            "keydown/letter_40.wav",
+            "keydown/letter_41.wav",
+            "keydown/letter_42.wav",
+            "keydown/letter_43.wav",
+            "keydown/letter_44.wav",
+            "keydown/letter_45.wav",
+            "keydown/letter_46.wav",
+            "keydown/letter_47.wav",
+            "keydown/letter_48.wav",
+            "keydown/letter_49.wav",
+            "keydown/letter_50.wav",
+            "keydown/letter_51.wav",
+            "keydown/letter_52.wav",
+            "keydown/letter_53.wav",
+            "keydown/letter_54.wav",
+            "keydown/letter_55.wav",
+            "keydown/letter_56.wav",
+            "keydown/letter_57.wav",
+            "keydown/letter_58.wav",
+            "keydown/letter_59.wav",
+            "keydown/letter_60.wav",
+            "keydown/letter_61.wav",
+            "keydown/letter_62.wav",
+            "keydown/letter_63.wav",
+            "keydown/letter_64.wav",
+            "keydown/letter_65.wav",
+            "keydown/letter_66.wav",
+            "keydown/letter_67.wav",
+            "keydown/letter_68.wav",
+            "keydown/letter_69.wav",
+            "keydown/letter_70.wav",
+            "keydown/letter_71.wav",
+            "keydown/letter_72.wav",
+            "keydown/letter_73.wav",
+            "keydown/letter_74.wav",
+            "keydown/letter_75.wav",
+            "keydown/letter_76.wav",
+            "keydown/letter_77.wav",
+            "keydown/letter_78.wav",
+            "keydown/letter_79.wav",
+            "keydown/letter_80.wav",
+            "keydown/letter_81.wav",
+            "keydown/letter_82.wav",
+            "keydown/letter_83.wav",
+            "keydown/letter_84.wav",
+            "keydown/letter_85.wav",
+            "keydown/letter_86.wav",
+            "keydown/letter_87.wav",
+            "keydown/letter_88.wav",
+            "keydown/letter_89.wav",
+            "keydown/letter_90.wav",
+            "keydown/letter_91.wav",
+            "keydown/letter_92.wav",
+            "keydown/letter_93.wav",
+            "keydown/letter_94.wav",
+            "keydown/letter_95.wav",
+            "keydown/letter_96.wav"
+        ],
+        "space": [
+            "keydown/space_01.wav"
+        ],
+        "enter": [
+            "keydown/enter_01.wav"
+        ],
+        "delete": [
+            "keydown/delete_01.wav"
+        ],
+        "modifier": [
+            "keydown/modifier_01.wav"
+        ],
+        "arrow": [
+            "keydown/letter_13.wav",
+            "keydown/letter_29.wav",
+            "keydown/letter_45.wav"
+        ],
+        "function": [
+            "keydown/letter_10.wav",
+            "keydown/letter_24.wav",
+            "keydown/letter_38.wav"
+        ],
+        "tab": [
+            "keydown/letter_17.wav",
+            "keydown/letter_34.wav"
+        ],
+        "escape": [
+            "keydown/letter_07.wav",
+            "keydown/letter_20.wav"
+        ]
+    },
+    "keyUp": {
+        "letter": [
+            "keyup/letter_01.wav",
+            "keyup/letter_02.wav",
+            "keyup/letter_03.wav",
+            "keyup/letter_04.wav",
+            "keyup/letter_05.wav",
+            "keyup/letter_06.wav",
+            "keyup/letter_07.wav",
+            "keyup/letter_08.wav",
+            "keyup/letter_09.wav",
+            "keyup/letter_10.wav",
+            "keyup/letter_11.wav",
+            "keyup/letter_12.wav",
+            "keyup/letter_13.wav",
+            "keyup/letter_14.wav",
+            "keyup/letter_15.wav",
+            "keyup/letter_16.wav",
+            "keyup/letter_17.wav",
+            "keyup/letter_18.wav",
+            "keyup/letter_19.wav",
+            "keyup/letter_20.wav",
+            "keyup/letter_21.wav",
+            "keyup/letter_22.wav",
+            "keyup/letter_23.wav",
+            "keyup/letter_24.wav",
+            "keyup/letter_25.wav",
+            "keyup/letter_26.wav",
+            "keyup/letter_27.wav",
+            "keyup/letter_28.wav",
+            "keyup/letter_29.wav",
+            "keyup/letter_30.wav",
+            "keyup/letter_31.wav",
+            "keyup/letter_32.wav",
+            "keyup/letter_33.wav",
+            "keyup/letter_34.wav",
+            "keyup/letter_35.wav",
+            "keyup/letter_36.wav"
+        ],
+        "space": [
+            "keyup/space_01.wav"
+        ],
+        "enter": [
+            "keyup/enter_01.wav"
+        ],
+        "delete": [
+            "keyup/delete_01.wav"
+        ],
+        "modifier": [
+            "keyup/modifier_01.wav"
+        ],
+        "arrow": [
+            "keyup/letter_09.wav",
+            "keyup/letter_17.wav",
+            "keyup/letter_25.wav"
+        ],
+        "function": [
+            "keyup/letter_06.wav",
+            "keyup/letter_13.wav",
+            "keyup/letter_21.wav"
+        ],
+        "tab": [
+            "keyup/letter_10.wav",
+            "keyup/letter_16.wav"
+        ],
+        "escape": [
+            "keyup/letter_04.wav",
+            "keyup/letter_12.wav"
+        ]
+    }
+}

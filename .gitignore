@@ -1,0 +1,23 @@
+# Build
+build/
+DerivedData/
+*.xcodeproj/xcuserdata/
+*.xcodeproj/project.xcworkspace/xcuserdata/
+
+# Xcode generated (regenerate with xcodegen)
+HappyKeyTone.xcodeproj/
+
+# Dependencies
+.build/
+
+# macOS
+.DS_Store
+*.swp
+*~
+
+# Sparkle private key (NEVER commit)
+# EdDSA key is stored in Keychain, not in files
+
+# Secrets
+*.p12
+*.mobileprovision
