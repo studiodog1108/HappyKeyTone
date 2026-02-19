@@ -46,7 +46,7 @@ final class AppController {
         }
     }
 
-    var selectedSoundPackID: String = "cherry-mx-blue" {
+    var selectedSoundPackID: String = "Happy" {
         didSet {
             UserDefaults.standard.set(selectedSoundPackID, forKey: "selectedSoundPackID")
             loadSoundPack()
@@ -104,7 +104,7 @@ final class AppController {
         // UserDefaultsから復元（didSetはinitでは呼ばれない）
         isEnabled = UserDefaults.standard.object(forKey: "isEnabled") as? Bool ?? true
         volume = UserDefaults.standard.object(forKey: "volume") as? Float ?? 0.8
-        selectedSoundPackID = UserDefaults.standard.string(forKey: "selectedSoundPackID") ?? "cherry-mx-blue"
+        selectedSoundPackID = UserDefaults.standard.string(forKey: "selectedSoundPackID") ?? "Happy"
         pitchVariation = UserDefaults.standard.object(forKey: "pitchVariation") as? Float ?? 0.05
 
         audioEngine.volume = volume

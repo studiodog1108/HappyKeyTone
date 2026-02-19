@@ -15,9 +15,9 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>LSUIElement</key>
 	<true/>
 	<key>NSHumanReadableCopyright</key>
@@ -28,5 +28,7 @@
 	<string>https://raw.githubusercontent.com/studiodog1108/HappyKeyTone/main/appcast.xml</string>
 	<key>SUPublicEDKey</key>
 	<string>K6ILHMxqI6jjI4XuF9FixaF0idatQ6pUfnPMZnsfhSM=</string>
+	<key>SUScheduledCheckInterval</key>
+	<integer>86400</integer>
 </dict>
 </plist>

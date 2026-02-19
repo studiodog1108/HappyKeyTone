@@ -6,14 +6,11 @@ APP_NAME="HappyKeyTone"
 SCHEME="HappyKeyTone"
 PROJECT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
 BUILD_DIR="$PROJECT_DIR/build/release"
-SPARKLE_BIN="/Users/studiodog/Projects/projects/Sparkle-2.8.1/bin"
+SPARKLE_BIN="/tmp/sparkle-tools/bin"
 KEYCHAIN_PROFILE="AC_PASSWORD"
 EXPORT_OPTIONS="$PROJECT_DIR/scripts/ExportOptions.plist"
 
-# ─── Version ──────────────────────────────────────
-VERSION=$(defaults read "$PROJECT_DIR/HappyKeyTone/Info.plist" CFBundleShortVersionString)
-BUILD=$(defaults read "$PROJECT_DIR/HappyKeyTone/Info.plist" CFBundleVersion)
-echo "📦 Releasing $APP_NAME v$VERSION (build $BUILD)"
+# ─── Version (read after xcodegen regenerates Info.plist) ─
 
 # ─── Regenerate Xcode Project ─────────────────────
 echo ""
@@ -41,6 +38,11 @@ if [ ! -d "$ARCHIVE_PATH" ]; then
   exit 1
 fi
 echo "✅ Archive succeeded"
+
+# Read version from archived app (after xcodegen + build variable resolution)
+VERSION=$(defaults read "$ARCHIVE_PATH/Products/Applications/$APP_NAME.app/Contents/Info.plist" CFBundleShortVersionString)
+BUILD=$(defaults read "$ARCHIVE_PATH/Products/Applications/$APP_NAME.app/Contents/Info.plist" CFBundleVersion)
+echo "📦 Version: $APP_NAME v$VERSION (build $BUILD)"
 
 # ─── Export ───────────────────────────────────────
 echo ""
