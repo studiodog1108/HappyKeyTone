@@ -40,50 +40,52 @@ struct MainPopoverView: View {
                 .clipShape(RoundedRectangle(cornerRadius: 6))
             }
 
-            // 権限警告バナー（非ブロッキング）
+            // 権限ガイドバナー
             if controller.needsPermission {
-                HStack(spacing: 8) {
-                    Image(systemName: "lock.shield")
-                        .foregroundStyle(.orange)
-                    VStack(alignment: .leading, spacing: 2) {
-                        Text("Input Monitoring Required")
-                            .font(.caption.bold())
-                        Text("Grant Input Monitoring or Accessibility permission.")
-                            .font(.caption2)
-                            .foregroundStyle(.secondary)
-                    }
-                    Spacer()
-                    Button("Input") {
-                        controller.requestInputMonitoringPermission()
-                    }
-                    .buttonStyle(.borderedProminent)
-                    .controlSize(.small)
-                    Button("AX") {
-                        controller.requestAccessibilityPermission()
-                    }
-                    .buttonStyle(.bordered)
-                    .controlSize(.small)
-                }
-                .padding(8)
-                .background(.orange.opacity(0.1))
-                .clipShape(RoundedRectangle(cornerRadius: 6))
-            }
+                VStack(spacing: 10) {
+                    HStack(spacing: 8) {
+                        Image(systemName: "keyboard.badge.eye")
+                            .font(.title3)
+                            .foregroundStyle(.orange)
 
-            VStack(alignment: .leading, spacing: 4) {
-                Text("Monitor: \(controller.monitorBackend.rawValue)")
-                Text("Input: \(controller.inputMonitoringGranted ? "Granted" : "Missing")  |  Accessibility: \(controller.accessibilityGranted ? "Granted" : "Missing")")
-                Text("Events: \(controller.keyEventsReceived)  |  Played: \(controller.soundsPlayed)  |  Preview: \(controller.previewPlays)")
-                if let latest = controller.diagnosticLogs.first {
-                    Text("[\(latest.level.rawValue)] \(latest.message)")
-                        .lineLimit(2)
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text("Permission Required")
+                                .font(.caption.bold())
+                            Text("Enable keyboard monitoring to hear typing sounds.")
+                                .font(.caption2)
+                                .foregroundStyle(.secondary)
+                        }
+
+                        Spacer()
+                    }
+
+                    HStack(spacing: 8) {
+                        Button {
+                            controller.showOnboardingWindowIfNeeded()
+                        } label: {
+                            HStack(spacing: 4) {
+                                Image(systemName: "questionmark.circle")
+                                Text("Setup Guide")
+                            }
+                        }
+                        .controlSize(.small)
+
+                        Button {
+                            controller.requestInputMonitoringPermission()
+                        } label: {
+                            HStack(spacing: 4) {
+                                Image(systemName: "gear")
+                                Text("Open Settings")
+                            }
+                        }
+                        .buttonStyle(.borderedProminent)
+                        .controlSize(.small)
+                    }
                 }
+                .padding(10)
+                .background(.orange.opacity(0.08))
+                .clipShape(RoundedRectangle(cornerRadius: 8))
             }
-            .font(.caption2)
-            .foregroundStyle(.secondary)
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(8)
-            .background(.gray.opacity(0.08))
-            .clipShape(RoundedRectangle(cornerRadius: 6))
 
             Divider()
 
@@ -138,12 +140,6 @@ struct MainPopoverView: View {
 
                 Button("Test Sound") {
                     controller.playPreviewSound()
-                }
-                .buttonStyle(.plain)
-                .foregroundStyle(.blue)
-
-                Button("Refresh") {
-                    controller.refreshDiagnostics()
                 }
                 .buttonStyle(.plain)
                 .foregroundStyle(.blue)

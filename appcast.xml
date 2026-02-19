@@ -6,6 +6,28 @@
     <description>HappyKeyTone updates</description>
     <language>ja</language>
     <item>
+      <title>Version 1.1.0</title>
+      <pubDate>Wed, 19 Feb 2026 05:30:00 +0000</pubDate>
+      <sparkle:version>3</sparkle:version>
+      <sparkle:shortVersionString>1.1.0</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+      <description><![CDATA[
+        <h2>HappyKeyTone v1.1.0</h2>
+        <ul>
+          <li>初回起動時のセットアップガイドを追加</li>
+          <li>アクセシビリティ権限のオンボーディングUIを大幅改善</li>
+          <li>メニューバーポップオーバーの権限バナーをわかりやすく刷新</li>
+          <li>ステップバイステップの権限設定手順を表示</li>
+        </ul>
+      ]]></description>
+      <enclosure
+        url="https://github.com/studiodog1108/HappyKeyTone/releases/download/v1.1.0/HappyKeyTone.zip"
+        type="application/octet-stream"
+        sparkle:edSignature="A/eIyA/5HAC5mIRCwxVn4/cu8wa24OgROL9WmTTxRcK2eiEAZZurY7bJXpzssV6AhsGFnVX8lIXF0hqXpzvtAg=="
+        length="47290869"
+      />
+    </item>
+    <item>
       <title>Version 1.0.1</title>
       <pubDate>Wed, 19 Feb 2026 03:10:00 +0000</pubDate>
       <sparkle:version>2</sparkle:version>

@@ -4,6 +4,7 @@ import CoreGraphics
 import Foundation
 import Observation
 import os
+import SwiftUI
 
 private let logger = Logger(subsystem: "com.happykeytone.app", category: "AppController")
 
@@ -72,6 +73,9 @@ final class AppController {
     var accessibilityGranted: Bool = false
     var monitorBackend: KeyboardMonitorBackend = .none
 
+    /// オンボーディング完了フラグ
+    var hasCompletedOnboarding: Bool = false
+
     /// 実行時診断
     var keyEventsReceived: Int = 0
     var soundsPlayed: Int = 0
@@ -85,6 +89,11 @@ final class AppController {
     @ObservationIgnored private let audioEngine = TypingAudioEngine()
     @ObservationIgnored private let keyEventForwarder = KeyEventForwarder()
     @ObservationIgnored private let eventTapService: EventTapService
+
+    /// オンボーディングウィンドウの参照
+    @ObservationIgnored private var onboardingWindow: NSWindow?
+    /// ウィンドウクローズ通知のオブザーバー
+    @ObservationIgnored private var onboardingCloseObserver: Any?
 
     /// 権限チェック用の定期タイマー
     private var permissionRetryTask: Task<Void, Never>?
@@ -113,6 +122,8 @@ final class AppController {
             self?.handleKeyEvent(event)
         }
 
+        hasCompletedOnboarding = UserDefaults.standard.bool(forKey: "hasCompletedOnboarding")
+
         refreshPermissionStatus(log: false)
         loadSoundPack()
         addDiagnostic(
@@ -127,6 +138,14 @@ final class AppController {
         // 有効なら即座にイベントタップ開始を試行
         if isEnabled {
             startEventTap()
+        }
+
+        // 初回起動時はオンボーディングウィンドウを表示
+        if !hasCompletedOnboarding {
+            Task { @MainActor [weak self] in
+                try? await Task.sleep(for: .seconds(1))
+                self?.showOnboardingWindowIfNeeded()
+            }
         }
     }
 
@@ -306,6 +325,68 @@ final class AppController {
 
     func dismissError() {
         errorMessage = nil
+    }
+
+    /// 権限状態を外部からチェック（オンボーディングビュー用）
+    func checkPermissions() {
+        refreshPermissionStatus(log: false)
+    }
+
+    /// オンボーディングを完了としてマーク
+    func completeOnboarding() {
+        hasCompletedOnboarding = true
+        UserDefaults.standard.set(true, forKey: "hasCompletedOnboarding")
+        dismissOnboardingWindow()
+    }
+
+    /// オンボーディングウィンドウを表示
+    func showOnboardingWindowIfNeeded() {
+        guard !hasCompletedOnboarding else { return }
+        if let existingWindow = onboardingWindow {
+            existingWindow.makeKeyAndOrderFront(nil)
+            NSApp.activate(ignoringOtherApps: true)
+            return
+        }
+
+        let onboardingView = OnboardingView()
+            .environment(self)
+
+        let window = NSWindow(
+            contentRect: NSRect(x: 0, y: 0, width: 480, height: 560),
+            styleMask: [.titled, .closable],
+            backing: .buffered,
+            defer: false
+        )
+        window.title = "HappyKeyTone Setup"
+        window.contentView = NSHostingView(rootView: onboardingView)
+        window.center()
+        window.isReleasedWhenClosed = false
+        window.makeKeyAndOrderFront(nil)
+        NSApp.activate(ignoringOtherApps: true)
+
+        // ウィンドウが閉じられたときに参照をクリーンアップ
+        onboardingCloseObserver = NotificationCenter.default.addObserver(
+            forName: NSWindow.willCloseNotification,
+            object: window,
+            queue: .main
+        ) { [weak self] _ in
+            Task { @MainActor [weak self] in
+                self?.onboardingWindow = nil
+                self?.onboardingCloseObserver = nil
+            }
+        }
+
+        onboardingWindow = window
+    }
+
+    /// オンボーディングウィンドウを閉じる
+    private func dismissOnboardingWindow() {
+        if let observer = onboardingCloseObserver {
+            NotificationCenter.default.removeObserver(observer)
+            onboardingCloseObserver = nil
+        }
+        onboardingWindow?.close()
+        onboardingWindow = nil
     }
 
     private func hasInputMonitoringPermission() -> Bool {
